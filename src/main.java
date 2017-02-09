@@ -172,7 +172,11 @@ public class main {
         System.out.println("3. Remove a car.");
         System.out.println("4. Look up a car in a given position.");
         System.out.println("5. Replace a car in a given position.");
-        System.out.println("6. Quit");
+        System.out.println("6. List cars based on make.");
+        System.out.println("7. List cars based on years.");
+        System.out.println("8. List cars based on price limit.");
+        System.out.println("9. List cars based on new or used.");
+        System.out.println("10. Quit");
         System.out.println("");
     }
 
@@ -215,6 +219,23 @@ public class main {
                 carLot.replaceCar(validate.getInt(sc) - 1, getInput(sc, validate)); 
             }
             else if (userInput == 6) {
+                System.out.println("Please enter the make of car(s) you would like to see: ");
+                carLot.listByMake(validate.getString(sc));
+            }
+            else if (userInput == 7) {
+                System.out.println("Please enter the year of car(s) you would like to see: ");
+                carLot.listByYear(validate.getInt(sc));
+            }
+            else if (userInput == 8) {
+                System.out.println("Please enter the price limit of car(s) you would like to see: ");
+                carLot.listByPrice(validate.getInt(sc));
+            }
+            else if (userInput == 9) {
+                System.out.println("Would you like to see used or new cars? ");
+                carLot.listByUsed(validate.getString(sc));
+            }
+
+            else if (userInput == 10) {
                 System.out.println("Have a great day!");
                 break;
             }

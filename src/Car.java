@@ -10,6 +10,7 @@ public class Car {
     String model;
     int year;
     double price;
+    boolean isUsed;
     NumberFormat df = NumberFormat.getCurrencyInstance();
     NumberFormat mg = NumberFormat.getNumberInstance(Locale.US);
 
@@ -18,6 +19,7 @@ public class Car {
         this.model = model;
         this.year = year;
         this.price = price;
+        this.isUsed = false;
     }
 
     public Car(String theMake, String theModel, int theYear, double thePrice) {
@@ -25,6 +27,11 @@ public class Car {
         this.model = theModel;
         this.year = theYear;
         this.price = thePrice;
+        this.isUsed = false;
+    }
+
+    public boolean getUsed() {
+        return isUsed;
     }
 
     public String getMake() {

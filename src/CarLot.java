@@ -44,5 +44,60 @@ public class CarLot {
             carMap.get(i).printString();
         }
     }
-    
+
+    public void listByMake(String make) {
+        int counter = 1;
+
+        for (int i = 0; i < carMap.size(); ++i) {
+            if (carMap.get(i).getMake().toLowerCase().equals(make.toLowerCase())) {
+                System.out.print(counter + ". "); 
+                carMap.get(i).printString();
+                counter += 1;
+            }
+        }
+    }
+
+    public void listByYear(int year) {
+        int counter = 1;
+        
+        for (int i = 0; i < carMap.size(); ++i) {
+            if (carMap.get(i).getYear() == year) {
+                System.out.print(counter + ". "); 
+                carMap.get(i).printString();
+                counter += 1;
+            }
+        }
+    }
+
+    public void listByPrice(int price) {
+        int counter = 1;
+        
+        for (int i = 0; i < carMap.size(); ++i) {
+            if (carMap.get(i).getPrice() <= price) {
+                System.out.print(counter + ". "); 
+                carMap.get(i).printString();
+                counter += 1;
+            }
+        }
+    }
+
+    public void listByUsed(String input) {
+        int counter = 1;
+        if (input.toLowerCase().equals("used")) {
+            for (int i = 0; i < carMap.size(); ++i) {
+                if (carMap.get(i).getUsed()) {
+                    System.out.print(counter + ". ");
+                    carMap.get(i).printString();
+                }
+            }
+        }
+        else if (input.toLowerCase().equals("new")) {
+            for (int i = 0; i < carMap.size(); ++i) {
+                if (!carMap.get(i).getUsed()) {
+                    System.out.print(counter + ". ");
+                    carMap.get(i).printString();
+                }
+            }
+        }
+    }
 }

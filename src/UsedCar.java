@@ -6,6 +6,7 @@ import java.text.NumberFormat;
 
 public class UsedCar extends Car {
     private int miles;
+    private boolean isUsed;
 
     public UsedCar(String theMake, String theModel, int theYear, double thePrice, int theMiles) {
         this.make = theMake;
@@ -13,10 +14,15 @@ public class UsedCar extends Car {
         this.year = theYear;
         this.price = thePrice;
         this.miles = theMiles;
+        this.isUsed = true;
     }
 
     public int getMiles() {
         return miles;
+    }
+
+    public boolean getUsed() {
+        return isUsed;
     }
 
     public void setMiles(int miles) {
