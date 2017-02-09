@@ -33,8 +33,7 @@ public class main {
             sc.nextLine();
             price = Double.parseDouble(holder);
             cars[i] = new Car(make, model, year, price);
-        } 
-    }
+        } }
 
     // "overloading" for arraylist of cars
     public static void getInput(ArrayList<Car> theCars, int numCars, Scanner sc) {
@@ -60,6 +59,30 @@ public class main {
             theCars.add(theCar);
         }
     }
+
+    public static Car getInput(Scanner sc, Validator validate) {
+        String make, model, holder;
+        int year, mileage;
+        double price;
+
+        System.out.print("Enter Car Make: " );
+        make = validate.getString(sc);
+        System.out.print("Enter Car Model: ");
+        model = validate.getString(sc);
+        System.out.print("Enter Car Year: ");
+        year = validate.getInt(sc);
+        System.out.print("Enter Car Price: ");
+        price = validate.getDouble(sc);
+        System.out.print("enter Car Mileage: ");
+        mileage = validate.getInt(sc);
+
+        if (mileage > 0) {
+            return new UsedCar(make, model, year, price, mileage);
+        }
+    
+        return new Car(make, model, year, price);
+    }
+
 
     public static void printOutput(Car[] cars, int numCars) {
         System.out.println("");
@@ -140,7 +163,17 @@ public class main {
         holder.addCar(usedThree);
 
         return holder;
+    }
 
+    public static void listOptions() {
+        System.out.println("Welcome, what would you like to do? (Please choose a number)");
+        System.out.println("1. List all cars.");
+        System.out.println("2. Add a car.");
+        System.out.println("3. Remove a car.");
+        System.out.println("4. Look up a car in a given position.");
+        System.out.println("5. Replace a car in a given position.");
+        System.out.println("6. Quit");
+        System.out.println("");
     }
 
 
@@ -148,41 +181,59 @@ public class main {
         Validator validate = new Validator();
         Scanner sc = new Scanner(System.in);
         int userInput;
-        char toBuy;
+        char toContinue;
         ArrayList<Car> carList = generateCars();
-        //HashMap<Integer, Car> carMap = generateCarMap();
         CarLot carLot = generateCarLot();
 
-        System.out.println("Testing " + carLot.getSize());
-        carLot.listCars();
-
-
-
-/*
         while (true) {
-            printOutput(carList, carList.size());
-
-            // ask user which they would like to buy
-            System.out.println("Which car would you like?(Choose a number): ");
+            listOptions(); 
             userInput = validate.getInt(sc);
-            
-            if (userInput == carList.size() + 1) {
+            System.out.println("");
+
+            if (userInput == 1) {
+                System.out.println("Car list: ");
+                carLot.listCars();
+            }
+            else if (userInput == 2) {
+                System.out.println("Add a car.");
+                carLot.addCar(getInput(sc, validate));
+
+            }
+            else if (userInput == 3) {
+                System.out.println("Remove a car. (Choose number)");
+                carLot.listCars();
+                carLot.removeCar(validate.getInt(sc) - 1);
+            }
+            else if (userInput == 4) {
+                System.out.println("Please enter the number of the car you would like to look up: ");
+                // add another int validator to not exceed index limit
+                carLot.getCar(validate.getInt(sc) - 1);
+
+            }
+            else if (userInput == 5) {
+                System.out.println("Please enter the number of the car you would like to replace: ");
+                carLot.replaceCar(validate.getInt(sc) - 1, getInput(sc, validate)); 
+            }
+            else if (userInput == 6) {
                 System.out.println("Have a great day!");
                 break;
             }
 
-            carList.get(userInput - 1).printString();
 
-            System.out.println("Would you like to buy this car?(y/n): ");
-            toBuy = validate.getYesNo(sc);
 
-            if (toBuy == 'y' || toBuy == 'Y') {
-                carList.remove(userInput - 1);
-                System.out.println("Excellent! Our financedepartment will be in touch shortly!");
+
+
+
+            //carList.get(userInput - 1).printString();
+
+            System.out.println("Choose another?(y/n) ");
+            toContinue = validate.getYesNo(sc);
+
+            if (toContinue == 'n' || toContinue == 'N') {
+                break;
             }
 
             System.out.println("");
         }
-*/
     }
 }

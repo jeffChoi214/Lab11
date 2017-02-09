@@ -15,17 +15,34 @@ public class CarLot {
         return carMap.size();
     }
 
+    public void getCar(int index) {
+        carMap.get(index).printString();
+    }
+    
     public void removeCar(int index) {
         carMap.remove(index);
+
+        // pushes everything after that index to the left
+        while (index < carMap.size()) {
+            carMap.put(index, carMap.get(index + 1));
+            index += 1;
+        }
+
+        // last key will have a duplicate so delete the last item in map
+        carMap.remove(carMap.size() - 1);
+
+        System.out.println("size " + carMap.size());
     }
 
-    public void printCar(int index) {
-        carMap.get(index).printString();
+    public void replaceCar(int index, Car newCar) {
+        carMap.put(index, newCar);
     }
 
     public void listCars() {
         for (int i = 0; i < carMap.size(); ++i) {
+            System.out.print((i + 1) + ". ");
             carMap.get(i).printString();
         }
     }
+    
 }
