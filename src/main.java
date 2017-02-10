@@ -110,19 +110,13 @@ public class main {
 
     public static ArrayList<Car> generateCars() {
         ArrayList<Car> carList = new ArrayList<>();
-        Car newOne = new Car("Ford", "Escape", 2004, 12999);
-        Car newTwo = new Car("Toyota", "Camry", 2011, 21999);
-        Car newThree = new Car("Mercedes", "GLK", 2011, 39500);
-        UsedCar usedOne = new UsedCar("Honda", "Pilot", 2009, 12000, 60000);
-        UsedCar usedTwo = new UsedCar("Honda", "Civic", 2014, 22999, 20000);
-        UsedCar usedThree = new UsedCar("BMW", "335i", 2016, 39999, 999);
 
-        carList.add(newOne);
-        carList.add(newTwo);
-        carList.add(newThree);
-        carList.add(usedOne);
-        carList.add(usedTwo);
-        carList.add(usedThree);
+        carList.add(new Car("Ford", "Escape", 2004, 12999);
+        carList.add(new Car("Toyota", "Camry", 2011, 21999);
+        carList.add(new Car("Mercedes", "GLK", 2011, 39500);
+        carList.add(new UsedCar("Honda", "Pilot", 2009, 12000, 60000);
+        carList.add(new UsedCar("Honda", "Civic", 2014, 22999, 20000);
+        carList.add(new UsedCar("BMW", "335i", 2016, 39999, 999);
 
         return carList;
     }
